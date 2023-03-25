@@ -1,9 +1,9 @@
 <?php
 
 class About {
-	public function index()
+	public function index($nama = 'Sandika', $pekerjaan = 'Dosen')
 	{
-		echo 'About/index';
+		echo "Hallo, nama $nama, pekerjaan adalah $pekerjaan";
 	}
 	public function page()
 	{
