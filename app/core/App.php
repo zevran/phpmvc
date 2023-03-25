@@ -10,12 +10,18 @@ class App {
 		//var_dump('../app/controllers/' . $url[0] . '.php');
 		//$url[0] = 'home';
 		//controller
-		if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+		if (empty($url[0])) {
+			// code...
+			require_once '../app/controllers/home.php';
+		} else {
+			if (file_exists('../app/controllers/' . $url[0] . '.php')) {
 			$this->controller = $url[0];
 			unset($url[0]);
-		}
-		require_once '../app/controllers/' . $this->controller . '.php';
+			}
+			require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
+		}
+		
 
 		//method
 		if(isset($url[1])) {
