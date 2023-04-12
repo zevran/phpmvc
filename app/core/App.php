@@ -7,20 +7,18 @@ class App {
 
 	public function __construct()	{
 		$url = $this->parseURL();
-		//var_dump('../app/controllers/' . $url[0] . '.php');
-		//$url[0] = 'home';
+		
 		//controller
-		if (empty($url[0])) {
+		if ($url == NULL) {
 			// code...
-			require_once '../app/controllers/home.php';
-		} else {
-			if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+			$url[0] = $this->controller;
+		} 
+		if (file_exists('../app/controllers/' . $url[0] . '.php')) {
 			$this->controller = $url[0];
 			unset($url[0]);
-			}
-			require_once '../app/controllers/' . $this->controller . '.php';
-		$this->controller = new $this->controller;
 		}
+			require_once '../app/controllers/' . $this->controller . '.php';
+			$this->controller = new $this->controller;
 		
 
 		//method
